@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício JS Nacionaliade</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            position: absolute;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgb(247, 238, 255);
+        }
+
+        #container {
+            width: 450px;
+            height: 300px;
+            padding: 25px;
+            border-radius: 25px;
+            background-color: rgb(172, 108, 180);
+            background-image: linear-gradient(to top, rgb(172, 108, 180), rgb(155, 200, 243));
+            text-align: center;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1{
+            margin-bottom: 50px;
+            color: rgb(255, 255, 255);
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.178);
+        }
+
+        label{
+            color: white;
+        }
+
+        input#txtpais {
+            text-align: center;
+            height: 20px;
+            border-radius: 7px;
+            border: none;
+        }
+
+        input[type=button] {
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            transition: .2s;
+        }
+
+        input[type=button]:hover {
+            cursor: pointer;
+            background-color: rgb(123, 148, 230);
+            color: white;
+        }
+
+        div#nacionalidade {
+            color: white;
+            font: 1.2em;
+        }
+
+    </style>
+</head>
+<body>    
+    <div id="container">
+        <h1>Qual é sua nacionalidade?</h1>
+        
+        <label for="txtpais">País que você nasceu: </label>
+        <input type="text" name="txtpais" id="txtpais" aria-label="Digite seu país de nascimento">
+        <br>
+        <input type="button" value="verificar" onclick="verificar()" >
+        <div id="nacionalidade"></div>
+    </div>
+
+    <script>
+        function verificar () {
+            var pais = document.querySelector('input#txtpais').value
+            var comparar = pais.toLowerCase()
+            var nacionalidade = document.querySelector('div#nacionalidade')
+        
+            if (comparar == "") {
+                nacionalidade.innerHTML = `Digite um país valido`
+            }else if (comparar == 'brasil') {
+                nacionalidade.innerHTML = `<p>vivendo em ${pais} você é <strong>brasileiro</strong></p>`
+            } else {
+                nacionalidade.innerHTML = `<p>vivendo no ${pais} você é <strong>estrangeiro</strong></p>`
+            }
+        }
+    </script>
+</body>
+</html>
